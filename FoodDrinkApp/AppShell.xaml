@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="FoodDrinkApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:FoodDrinkApp"
+    Title="NutriBite"
+    FlyoutBehavior="Disabled"
+    Shell.BackgroundColor="{AppThemeBinding Light=#0E3B43, Dark=#061216}"
+    Shell.ForegroundColor="#FFFFFF"
+    Shell.TitleColor="#FFFFFF"
+    Shell.UnselectedColor="{AppThemeBinding Light=#8AB8B9, Dark=#7FA6AA}"
+    Shell.TabBarBackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#061216}"
+    Shell.TabBarForegroundColor="{AppThemeBinding Light=#00A896, Dark=#6BE4E6}"
+    Shell.TabBarTitleColor="{AppThemeBinding Light=#00A896, Dark=#6BE4E6}"
+    Shell.TabBarUnselectedColor="{AppThemeBinding Light=#6A858A, Dark=#7FA6AA}">
+
+    <TabBar>
+        <ShellContent
+            Title="Foods"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
+        <ShellContent
+            Title="Hardware"
+            ContentTemplate="{DataTemplate local:HardwarePage}"
+            Route="HardwarePage" />
+        <ShellContent
+            Title="Settings"
+            ContentTemplate="{DataTemplate local:SettingsPage}"
+            Route="SettingsPage" />
+    </TabBar>
+</Shell>

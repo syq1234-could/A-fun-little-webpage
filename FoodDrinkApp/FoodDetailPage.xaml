@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodDrinkApp.FoodDetailPage"
+             Title="Nutrition Details">
+    <ScrollView BackgroundColor="{AppThemeBinding Light=#F4F8F6, Dark=#071B1F}">
+        <VerticalStackLayout Padding="18" Spacing="16">
+            <Border StrokeThickness="0" Padding="18" BackgroundColor="{AppThemeBinding Light=#0E3B43, Dark=#061216}">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="8" />
+                </Border.StrokeShape>
+                <Grid RowDefinitions="Auto,Auto,Auto" RowSpacing="10">
+                    <Label x:Name="CategoryLabel"
+                           TextColor="#6BE4E6"
+                           FontSize="13"
+                           FontAttributes="Bold" />
+                    <Label x:Name="NameLabel"
+                           Grid.Row="1"
+                           FontSize="31"
+                           FontAttributes="Bold"
+                           TextColor="#FFFFFF"
+                           SemanticProperties.HeadingLevel="Level1" />
+                    <Border Grid.Row="2" StrokeThickness="0" BackgroundColor="#FFE45E" Padding="14,10" HorizontalOptions="Start">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+                        <Label x:Name="CaloriesLabel"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="#0E3B43" />
+                    </Border>
+                </Grid>
+            </Border>
+
+            <Border StrokeThickness="1"
+                    Stroke="{AppThemeBinding Light=#D5E4E2, Dark=#1C4A52}"
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#0A252B}"
+                    Padding="16">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="8" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="14">
+                    <Label Text="Macro analysis"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light=#0E2D33, Dark=#F4FFFD}"
+                           SemanticProperties.HeadingLevel="Level2" />
+                    <Label x:Name="MacroLabel"
+                           FontSize="15"
+                           TextColor="{AppThemeBinding Light=#587177, Dark=#BDD4D8}" />
+                    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
+                        <Border StrokeThickness="0" BackgroundColor="{AppThemeBinding Light=#EAF6FF, Dark=#102E3E}" Padding="10">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="8" />
+                            </Border.StrokeShape>
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Protein" FontSize="12" TextColor="{AppThemeBinding Light=#284B63, Dark=#C4E5FF}" />
+                                <ProgressBar x:Name="ProteinBar" ProgressColor="#284B63" />
+                            </VerticalStackLayout>
+                        </Border>
+                        <Border Grid.Column="1" StrokeThickness="0" BackgroundColor="{AppThemeBinding Light=#FFF5DF, Dark=#3B2A10}" Padding="10">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="8" />
+                            </Border.StrokeShape>
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Carbs" FontSize="12" TextColor="{AppThemeBinding Light=#C46D00, Dark=#FFD08A}" />
+                                <ProgressBar x:Name="CarbsBar" ProgressColor="#F5A623" />
+                            </VerticalStackLayout>
+                        </Border>
+                        <Border Grid.Column="2" StrokeThickness="0" BackgroundColor="{AppThemeBinding Light=#FFF0F7, Dark=#3A1B2A}" Padding="10">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="8" />
+                            </Border.StrokeShape>
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Fat" FontSize="12" TextColor="{AppThemeBinding Light=#8B3A62, Dark=#FFB7D5}" />
+                                <ProgressBar x:Name="FatBar" ProgressColor="#B94E80" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border StrokeThickness="1"
+                    Stroke="{AppThemeBinding Light=#D5E4E2, Dark=#1C4A52}"
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#0A252B}"
+                    Padding="16">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="8" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Food notes"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light=#0E2D33, Dark=#F4FFFD}" />
+                    <Label x:Name="DescriptionLabel"
+                           FontSize="15"
+                           TextColor="{AppThemeBinding Light=#587177, Dark=#BDD4D8}" />
+                    <Border StrokeThickness="0" BackgroundColor="{AppThemeBinding Light=#FFF5DF, Dark=#3B2A10}" Padding="12">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+                        <Label x:Name="AllergyLabel"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light=#8A5A00, Dark=#FFE6A8}" />
+                    </Border>
+                </VerticalStackLayout>
+            </Border>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                <Button Text="Read"
+                        BackgroundColor="#00A896"
+                        TextColor="#FFFFFF"
+                        Clicked="OnSpeakClicked"
+                        SemanticProperties.Hint="Read the nutrition summary aloud" />
+                <Button Grid.Column="1"
+                        Text="Stop"
+                        BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#0A252B}"
+                        BorderColor="{AppThemeBinding Light=#D5E4E2, Dark=#1C4A52}"
+                        BorderWidth="1"
+                        TextColor="{AppThemeBinding Light=#0E3B43, Dark=#DFF9F3}"
+                        Clicked="OnStopSpeechClicked"
+                        SemanticProperties.Hint="Stop the current speech" />
+            </Grid>
+
+            <Button Text="Meal reminder vibration"
+                    BackgroundColor="#284B63"
+                    TextColor="#FFFFFF"
+                    Clicked="OnVibrateClicked"
+                    SemanticProperties.Hint="Use mobile vibration as a meal reminder" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

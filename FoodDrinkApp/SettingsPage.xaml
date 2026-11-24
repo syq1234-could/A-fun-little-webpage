@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodDrinkApp.SettingsPage"
+             Title="Settings">
+    <ScrollView BackgroundColor="{AppThemeBinding Light=#EEF5F4, Dark=#071B1F}">
+        <VerticalStackLayout Padding="16" Spacing="14">
+            <Border StrokeThickness="0" Padding="18" BackgroundColor="{AppThemeBinding Light=#0E3B43, Dark=#061216}">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="8" />
+                </Border.StrokeShape>
+                <Grid RowDefinitions="Auto,Auto,Auto" RowSpacing="12">
+                    <Label Text="Access studio"
+                           FontSize="30"
+                           FontAttributes="Bold"
+                           TextColor="#FFFFFF"
+                           SemanticProperties.HeadingLevel="Level1" />
+                    <Label Grid.Row="1"
+                           Text="Tune theme, text size, and high-contrast presentation for the WCAG demo."
+                           FontSize="14"
+                           TextColor="#BFE8E0" />
+                    <Grid Grid.Row="2" ColumnDefinitions="*,*,*" ColumnSpacing="8">
+                        <Border StrokeThickness="0" BackgroundColor="#163F47" Padding="10">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="8" />
+                            </Border.StrokeShape>
+                            <Label Text="Contrast" TextColor="#FFFFFF" FontAttributes="Bold" FontSize="12" HorizontalTextAlignment="Center" />
+                        </Border>
+                        <Border Grid.Column="1" StrokeThickness="0" BackgroundColor="#163F47" Padding="10">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="8" />
+                            </Border.StrokeShape>
+                            <Label Text="Reader" TextColor="#FFFFFF" FontAttributes="Bold" FontSize="12" HorizontalTextAlignment="Center" />
+                        </Border>
+                        <Border Grid.Column="2" StrokeThickness="0" BackgroundColor="#163F47" Padding="10">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="8" />
+                            </Border.StrokeShape>
+                            <Label Text="Large text" TextColor="#FFFFFF" FontAttributes="Bold" FontSize="12" HorizontalTextAlignment="Center" />
+                        </Border>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <Border StrokeThickness="1"
+                    Stroke="{AppThemeBinding Light=#B9D4D0, Dark=#1C4A52}"
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#0A252B}"
+                    Padding="14">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="8" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="16">
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                        <Border StrokeThickness="0" BackgroundColor="#00A896" WidthRequest="38" HeightRequest="38">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="19" />
+                            </Border.StrokeShape>
+                            <Label Text="Aa" TextColor="#FFFFFF" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" Spacing="3">
+                            <Label Text="Accessible display"
+                                   FontSize="19"
+                                   FontAttributes="Bold"
+                                   TextColor="{AppThemeBinding Light=#0E2D33, Dark=#F4FFFD}" />
+                            <Label Text="Visible controls for the video explanation."
+                                   FontSize="12"
+                                   TextColor="{AppThemeBinding Light=#587177, Dark=#BDD4D8}" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Border StrokeThickness="0" BackgroundColor="{AppThemeBinding Light=#E8F8F5, Dark=#103137}" Padding="12">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="8">
+                            <Label Text="Theme mode"
+                                   FontSize="15"
+                                   FontAttributes="Bold"
+                                   TextColor="{AppThemeBinding Light=#0E3B43, Dark=#DFF9F3}" />
+                            <Picker x:Name="ThemePicker"
+                                    Title="Choose app theme"
+                                    SelectedIndexChanged="OnThemeChanged"
+                                    SemanticProperties.Hint="Switch between system, light, and dark theme">
+                                <Picker.Items>
+                                    <x:String>Use system theme</x:String>
+                                    <x:String>Light theme</x:String>
+                                    <x:String>Dark theme</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="14">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="Large text mode"
+                                   FontSize="17"
+                                   FontAttributes="Bold"
+                                   TextColor="{AppThemeBinding Light=#0E2D33, Dark=#F4FFFD}" />
+                            <Label Text="Increase text size for low-vision users and record the result on screen."
+                                   FontSize="13"
+                                   TextColor="{AppThemeBinding Light=#587177, Dark=#BDD4D8}" />
+                        </VerticalStackLayout>
+                        <Switch x:Name="LargeTextSwitch"
+                                Grid.Column="1"
+                                Toggled="OnLargeTextToggled"
+                                SemanticProperties.Hint="Increase text size across the current session" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                <Border StrokeThickness="0" BackgroundColor="{AppThemeBinding Light=#DFF9F3, Dark=#103137}" Padding="14">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="8" />
+                    </Border.StrokeShape>
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="WCAG"
+                               FontSize="21"
+                               FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light=#0E3B43, Dark=#DFF9F3}" />
+                        <Label Text="Readable contrast and semantic labels."
+                               FontSize="12"
+                               TextColor="{AppThemeBinding Light=#587177, Dark=#BDD4D8}" />
+                    </VerticalStackLayout>
+                </Border>
+                <Border Grid.Column="1" StrokeThickness="0" BackgroundColor="{AppThemeBinding Light=#F6F0FF, Dark=#211A34}" Padding="14">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="8" />
+                    </Border.StrokeShape>
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="Voice"
+                               FontSize="21"
+                               FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light=#5B3F8C, Dark=#D7C7FF}" />
+                        <Label Text="Screen reader friendly page structure."
+                               FontSize="12"
+                               TextColor="{AppThemeBinding Light=#587177, Dark=#BDD4D8}" />
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
+
+            <Border StrokeThickness="1"
+                    Stroke="{AppThemeBinding Light=#B9D4D0, Dark=#1C4A52}"
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#0A252B}"
+                    Padding="16">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="8" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="8">
+                    <Label x:Name="LargeTextPreviewTitle"
+                           Text="Large text preview"
+                           FontSize="21"
+                           FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light=#0E2D33, Dark=#F4FFFD}" />
+                    <Label x:Name="LargeTextPreviewBody"
+                           Text="When enabled, this text and the rest of the page become visibly larger."
+                           FontSize="15"
+                           TextColor="{AppThemeBinding Light=#587177, Dark=#BDD4D8}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border StrokeThickness="0" BackgroundColor="{AppThemeBinding Light=#DFF9F3, Dark=#103137}" Padding="12">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="8" />
+                </Border.StrokeShape>
+                <Label x:Name="SettingsStatusLabel"
+                       Text="Settings ready."
+                       FontAttributes="Bold"
+                       TextColor="{AppThemeBinding Light=#0E3B43, Dark=#DFF9F3}" />
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
